@@ -5,7 +5,8 @@ const PDFDocument = require('pdfkit');
 const app = express();
 app.use(express.json());
 
-app.post('/generate-report', async (req, res) => {
+// API endpoint: /api/generate-report
+app.post('/api/generate-report', async (req, res) => {
   const { domain } = req.body;
   if (!domain) {
     return res.status(400).json({ error: 'Domain eksik.' });
@@ -45,5 +46,6 @@ app.post('/generate-report', async (req, res) => {
   }
 });
 
+// Render için gerekli port ayarı
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Sunucu çalışıyor: http://localhost:${PORT}`));
